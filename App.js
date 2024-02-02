@@ -1,20 +1,29 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, SafeAreaView } from 'react-native';
+import Login from './src/Components/Login';
+import React, { useState }  from 'react'
 
 export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
+  const [user, setUser] = useState(null)
+
+    if(!user){
+      return <Login changeStatus={ (user) => setUser(user)}/>
+    }
+
+    return(
+        <SafeAreaView>
+            <Text>DENTRO DA TELA TAREFAS</Text>
+        </SafeAreaView>
+    )
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+    paddingTop: 25,
+    paddingHorizontal: 10,
+    backgroundColor: '#F2f6fc'
+  }
+})
+
+
